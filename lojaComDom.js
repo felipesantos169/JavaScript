@@ -10,6 +10,7 @@ let produtos = [
   const nome = document.getElementById('nome')
   const preco = document.getElementById('preco')
   const estoque = document.getElementById('estoque')
+  const lista = document.getElementById('lista')
 
   function renderizarCatalogo(){
 
@@ -84,6 +85,33 @@ let produtos = [
         catalogo.innerHTML = '';
         renderizarCatalogo();
     }
+
+       
+
+        lista.addEventListener('click', (e) => {
+
+            const nomeEditado = document.getElementById('nome').value
+            const precoEditado = document.getElementById('preco').value
+            const estoqueEditado = document.getElementById('estoque').value
+
+            e.preventDefault()
+            if(idSelecionado !== null){
+                produtos.forEach (produto => {
+                    if (idSelecionado === produto.id){
+
+                         produto.nome = nomeEditado
+                         produto.preco = Number(precoEditado)
+                         produto.estoque = estoqueEditado
+                    }
+                 })
+               }
+            
+               
+            idSelecionado = null;
+            catalogo.innerHTML = '';
+            renderizarCatalogo();
+          } 
+        )
 
   renderizarCatalogo()
  
